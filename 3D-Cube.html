@@ -9,7 +9,6 @@
     <script>
         var S, thetaX, thetaY, gl, prog;
 
-
         function main() {
             var canvas = document.getElementById("webglcanvas");
             gl = canvas.getContext("webgl");
@@ -64,8 +63,11 @@
                 -0.5, 0.5, -0.5
             ]);
             var a_coords_buffer = gl.createBuffer();
+
             gl.bindBuffer(gl.ARRAY_BUFFER, a_coords_buffer);
             gl.bufferData(gl.ARRAY_BUFFER, coords, gl.STATIC_DRAW);
+
+            
             var a_coords_location = gl.getAttribLocation(prog, "a_coords");
             gl.vertexAttribPointer(
                 a_coords_location,
@@ -74,6 +76,7 @@
                 gl.FALSE,
                 0,
                 0);
+
             gl.enableVertexAttribArray(a_coords_location);
         }
 
